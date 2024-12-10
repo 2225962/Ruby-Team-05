@@ -1,20 +1,17 @@
-class Order # 
+class Order 
+
+  DISCOUNTS = {'food' => 0.9, 'electronics' => 0.8}.freeze
+
   def initialize(items)
     @items = items
   end
 
   def total_price
-    total = 0
-    @items.each do |item|
-      if item[:category] == 'food'
-        total += item[:price] * 0.2
-      elsif item[:category] == 'electronics'
-        total += item[:price] * 0.1
-      else
-        total += item[:price] 
-      end
-    end
-    total
+    @items.sum{ |item| item[:price] * discount_for(item[:category])}
+  end
+
+  def discount_for(category)
+    DISCOUNTS.fetch(category, 1.0)
   end
 end
 
