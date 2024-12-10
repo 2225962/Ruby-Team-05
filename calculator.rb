@@ -22,10 +22,7 @@ class Calculator
   end
 
   def divide(a, b)
-    if b == 0
-      puts "Error: Cannot divide by zero!"
-      return
-    end
+    return nil if b == 0
     result = a / b
     store_in_history(result)
     result
