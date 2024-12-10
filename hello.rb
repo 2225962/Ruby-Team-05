@@ -1,3 +1,3 @@
-code = "1 + 1 = 0"
+code = "1 +"
 result = eval(code)
 puts result
